@@ -37,7 +37,7 @@ class ApiMiddleware {
   public validateToken = (req: Request, res: Response, next: NextFunction) => {
     try {
       jwt.verify(
-        (req.headers.authorization as string)?.split("Bearer ")[1],
+        (req.cookies.authorization as string)?.split("Bearer ")[1],
         process.env.TOKEN as string
       );
       next();

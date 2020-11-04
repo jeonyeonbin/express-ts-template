@@ -14,9 +14,8 @@ class TokenController {
       }
     );
 
-    res.send({
-      token,
-    });
+    res.cookie("authorization", `Bearer ${token}`);
+    res.send({ success: true });
   };
 }
 
