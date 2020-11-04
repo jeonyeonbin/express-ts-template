@@ -6,6 +6,7 @@ import express from "express";
 
 import ApiMiddleware from "./middleware/ApiMiddleware";
 import ErrorMiddleware from "./middleware/ErrorMiddleware";
+import routes from "./routes";
 
 const app = express();
 
@@ -24,7 +25,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
-app.use("/api", ApiMiddleware.getApiProxy);
+app.use("/api", ApiMiddleware.validateToken, ApiMiddleware.getLandApiProxy);
+app.use(routes);
 app.use(ErrorMiddleware.getErrorMiddleware);
 
 export default app;

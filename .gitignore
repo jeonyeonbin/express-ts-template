@@ -1,3 +1,5 @@
 /node_modules/
 /dist/**
 /.vscode/**
+jet-logger.log
+yarn-error.log
